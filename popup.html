@@ -2,22 +2,21 @@
 <html>
 <head>
   <title>PostPortal Suggestions</title>
-  <style>
-    body { font-family: Arial, sans-serif; width: 300px; padding: 20px; }
-    .post { margin-bottom: 10px; }
-    .post a { text-decoration: none; color: blue; }
-    .post a:hover { text-decoration: underline; }
-  </style>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <h1>Suggestions</h1>
-  
-  <h2>Reddit</h2>
-  <div id="reddit-suggestions"></div>
-  
-  <h2>Stack Exchange</h2>
-  <div id="stackexchange-suggestions"></div>
-  
+  <div class="section" id="selected-text-section">
+    <h2><img src="icon.png" alt="Icon">Post Portaling:</h2>
+    <div id="selected-text"></div>
+  </div>
+  <div class="section" id="reddit-section">
+    <h2><img src="reddit.png" alt="Reddit Icon">Reddit</h2>
+    <div id="reddit-suggestions"></div>
+  </div>
+  <div class="section" id="stackoverflow-section">
+    <h2><img src="stack.png" alt="Stack Overflow Icon">Stack Overflow</h2>
+    <div id="stackoverflow-suggestions"></div>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
