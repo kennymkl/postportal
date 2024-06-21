@@ -31,7 +31,9 @@ async function fetchFromReddit(query) {
       stats: {
         upvotes: post.data.ups,
         comments: post.data.num_comments,
-        date: new Date(post.data.created_utc * 1000).toLocaleDateString()
+        date: new Date(post.data.created_utc * 1000).toLocaleDateString(),
+        tags: "r/"+post.data.subreddit,
+        credibility: post.data.total_awards_received
       }
     }));
   } catch (error) {
@@ -50,7 +52,9 @@ async function fetchFromStackOverflow(query) {
       stats: {
         upvotes: post.score,
         comments: post.answer_count,
-        date: new Date(post.creation_date * 1000).toLocaleDateString()
+        date: new Date(post.creation_date * 1000).toLocaleDateString(),
+        tags: post.tags,
+        credibility: post.owner.reputation
       }
     }));
   } catch (error) {

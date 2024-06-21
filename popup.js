@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   chrome.storage.local.get(['selectedText', 'redditSuggestions', 'stackOverflowSuggestions'], (result) => {
     const selectedText = result.selectedText || '';
     const redditSuggestions = result.redditSuggestions || [];
-    const stackExchangeSuggestions = result.stackOverflowSuggestions || [];
+    const stackOverflowSuggestions = result.stackOverflowSuggestions || [];
     
     const selectedTextDiv = document.getElementById('selected-text');
     const redditSuggestionsDiv = document.getElementById('reddit-suggestions');
-    const stackExchangeSuggestionsDiv = document.getElementById('stackoverflow-suggestions');
+    const stackOverflowSuggestionsDiv = document.getElementById('stackoverflow-suggestions');
 
     // Display selected text
     selectedTextDiv.innerText = selectedText;
@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>Upvotes: ${stats.upvotes}</p>
         <p>Comments: ${stats.comments}</p>
         <p>Date: ${stats.date}</p>
+        <p>Tags: ${stats.tags}</p>
+        <p>Credibility: ${stats.credibility}</p>
       `;
 
       postDiv.appendChild(dropdownIcon);
@@ -60,13 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Display Stack Overflow suggestions
-    if (stackExchangeSuggestions.length === 0) {
-      stackExchangeSuggestionsDiv.innerHTML = '<p>No suggestions found for Stack Exchange.</p>';
+    if (stackOverflowSuggestions.length === 0) {
+      stackOverflowSuggestionsDiv.innerHTML = '<p>No suggestions found for Stack Overflow.</p>';
     } else {
-      stackExchangeSuggestions.forEach(post => {
+      stackOverflowSuggestions.forEach(post => {
         const postDiv = createPostElement(post);
        
-        stackExchangeSuggestionsDiv.appendChild(postDiv);
+        stackOverflowSuggestionsDiv.appendChild(postDiv);
       });
     }
   });
