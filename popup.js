@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   chrome.storage.local.get(['selectedText', 'redditSuggestions', 'stackOverflowSuggestions'], (result) => {
     const selectedText = result.selectedText || '';
     const redditSuggestions = result.redditSuggestions || [];
-    const stackOverflowSuggestions = result.stackOverflowSuggestions || [];
+    const stackExchangeSuggestions = result.stackOverflowSuggestions || [];
     
     const selectedTextDiv = document.getElementById('selected-text');
     const redditSuggestionsDiv = document.getElementById('reddit-suggestions');
-    const stackOverflowSuggestionsDiv = document.getElementById('stackoverflow-suggestions');
+    const stackExchangeSuggestionsDiv = document.getElementById('stackoverflow-suggestions');
 
     // Display selected text
     selectedTextDiv.innerText = selectedText;
@@ -60,12 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Display Stack Overflow suggestions
-    if (stackOverflowSuggestions.length === 0) {
-      stackOverflowSuggestionsDiv.innerHTML = '<p>No suggestions found for Stack Overflow.</p>';
+    if (stackExchangeSuggestions.length === 0) {
+      stackExchangeSuggestionsDiv.innerHTML = '<p>No suggestions found for Stack Exchange.</p>';
     } else {
-      stackOverflowSuggestions.forEach(post => {
+      stackExchangeSuggestions.forEach(post => {
         const postDiv = createPostElement(post);
-        stackOverflowSuggestionsDiv.appendChild(postDiv);
+       
+        stackExchangeSuggestionsDiv.appendChild(postDiv);
       });
     }
   });
